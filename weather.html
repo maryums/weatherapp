@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WeatherInThe6ix</title>
+    <style>
+        body{
+            background: skyblue;
+        }
+        body, button, option{ 
+            font-family: sans-serif; 
+            text-align: center;
+        }
+        button, select{ 
+            height: 30px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>WeatherInThe6ix</h1>
+    <iframe height="200" frameborder="0"
+        src="https://weather.gc.ca/wxlink/wxlink.html?cityCode=on-143">
+    </iframe>
+    <br>
+    <select>
+        <option value="143">Toronto</option>
+        <option value="24">Mississauga</option>
+        <option value="54">Pickering</option>
+    </select>
+    <button onclick="location.reload();">Refresh</button>
+    <script>   
+        const frame = document.querySelector("iframe");
+        const options = document.querySelector("select");
+        options.addEventListener("change", ()=> {
+            let cityCode = options.value;
+            let weatherFrame = "https://weather.gc.ca/wxlink/wxlink.html?cityCode=on-"+cityCode;
+            frame.src = weatherFrame;
+        });
+    </script>
+</body>
+</html>
